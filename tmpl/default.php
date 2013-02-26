@@ -26,7 +26,7 @@ else
         <?php endif; ?>
     <ul class="tweets">
         <?php foreach ($tweets as $tweet) :
-		$tweet->text = preg_replace('#[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]#', '<a href=\'\\0\'>\\0</a>', $tweet->text);
+		$tweet->text = preg_replace('/#[\w]+/', '<a href=\'https://twitter.com/#!/\\0\'>\\0</a>', $tweet->text);
 		$tweet->text = preg_replace('/@(.+?)\b/', "<a href=\"https://twitter.com/#!/$1\">@$1</a>", $tweet->text);
 		$tweet->screen_name = (isset($tweet->user->screen_name)) ? $tweet->user->screen_name : $tweet->from_user;
 		?>
